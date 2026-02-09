@@ -13,3 +13,9 @@ def is_empty(piece):
 
 def is_piece(piece):
     return bool(piece&7)
+
+def is_white(piece):
+    return (piece>>3)==1
+
+def is_black(piece):
+    return (piece>>3)==2

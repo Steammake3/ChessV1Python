@@ -109,3 +109,27 @@ class ChessBoard:
         retfen += f"{self.halfmove} {self.fullmove}"
 
         return retfen
+    
+    def show(self):
+        """×"""
+        VMAP = {Pieces.Black | Pieces.Rook : "♜",
+                Pieces.Black | Pieces.Knight : "♞",
+                Pieces.Black | Pieces.Bishop : "♝",
+                Pieces.Black | Pieces.Queen : "♛",
+                Pieces.Black | Pieces.King : "♚",
+                Pieces.Black | Pieces.Pawn : "♟",
+                Pieces.White | Pieces.Rook : "♖",
+                Pieces.White | Pieces.Knight : "♘",
+                Pieces.White | Pieces.Bishop : "♗",
+                Pieces.White | Pieces.Queen : "♕",
+                Pieces.White | Pieces.King : "♔",
+                Pieces.White | Pieces.Pawn : "♙"}
+        
+        retval = ""
+        for rank in reversed([self.board[i:i+8] for i in range(0, 64, 8)]):
+            for piece in rank:
+                if piece==Pieces.Empty: retval += "  |"
+                else: retval += f"{VMAP[piece]} |"
+            retval += "\n"+"==+"*8+"\n"
+        
+        return retval
