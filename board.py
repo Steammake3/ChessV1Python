@@ -118,7 +118,7 @@ class ChessBoard:
                 Pieces.Black | Pieces.Bishop : "♝",
                 Pieces.Black | Pieces.Queen : "♛",
                 Pieces.Black | Pieces.King : "♚",
-                Pieces.Black | Pieces.Pawn : "♟",
+                Pieces.Black | Pieces.Pawn : "♟︎",
                 Pieces.White | Pieces.Rook : "♖",
                 Pieces.White | Pieces.Knight : "♘",
                 Pieces.White | Pieces.Bishop : "♗",
