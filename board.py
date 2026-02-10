@@ -1,5 +1,6 @@
 from helper import *
 from globals import Pieces
+from termcolor import colored
 
 class ChessBoard:
 
@@ -126,10 +127,17 @@ class ChessBoard:
                 Pieces.White | Pieces.Pawn : "♙"}
         
         retval = ""
-        for rank in reversed([self.board[i:i+8] for i in range(0, 64, 8)]):
-            for piece in rank:
-                if piece==Pieces.Empty: retval += "  |"
-                else: retval += f"{VMAP[piece]} |"
+
+        for j in range(7,-1, -1):
+            for i in range(8):
+                piece = self.board[i+8*j]
+                oc = "on_light_green" if (i+j)%2 else "on_light_cyan"
+                if (i+8*j)==self.en_passant:
+                    retval += colored("# ", "black", oc)+"|"
+                elif piece==Pieces.Empty:
+                    retval += colored("  ", "black", oc)+"|"
+                else: retval += colored(f"{VMAP[piece]} ", "black", oc) + "|"
+            
             retval += "\n"+"==+"*8+"\n"
         
         return retval
